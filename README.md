@@ -1,49 +1,123 @@
-# Nmap Network Scanning Lab
+# 🔎 Nmap Network Scanning & Service Enumeration Lab
 
-## Objective
+A beginner cybersecurity lab demonstrating network scanning, open-port identification, and service/version enumeration using Nmap in a controlled Kali Linux environment.
 
-To learn how Nmap can be used to identify open ports and running services on a controlled local laboratory system.
+> ⚠️ **Ethical Use:** This project was performed only against my own local laboratory system (`127.0.0.1`). No unauthorized systems or networks were scanned.
 
-## Lab Environment
+---
 
-- Operating System: Kali Linux
-- Virtualization: VirtualBox
-- Scanning Tool: Nmap
-- Target: Localhost (127.0.0.1)
-- Web Server: Python SimpleHTTPServer
+## 🎯 Objective
 
-## Methodology
+The objective of this project was to understand how network scanners can identify open ports and determine which services are running on a system.
 
-1. Performed a basic Nmap scan against localhost.
-2. Started a Python HTTP server on TCP port 8000.
-3. Scanned localhost again to identify the newly available port.
-4. Used Nmap service/version detection to identify the service.
-5. Saved the scan results for documentation.
+---
 
-## Results
+## 🧪 Lab Environment
 
-The initial scan identified no open ports among Nmap's default 1,000 TCP ports.
+| Component | Details |
+|---|---|
+| Operating System | Kali Linux |
+| Virtualization | VirtualBox |
+| Security Tool | Nmap 7.99 |
+| Target | Localhost (`127.0.0.1`) |
+| Test Service | Python HTTP Server |
+| Python Version | 3.13.12 |
 
-After starting the Python HTTP server, TCP port 8000 was detected as open.
+---
 
-Service/version detection identified:
+## 🛠️ Tools Used
 
-8000/tcp - HTTP - SimpleHTTPServer 0.6 (Python 3.13.12)
+- Kali Linux
+- Nmap
+- Python 3
+- VirtualBox
+- Linux Terminal
 
-## Security Analysis
+---
+
+## 🔬 Methodology
+
+### 1. Initial Network Scan
+
+First, I scanned the local Kali system using:
+
+```bash
+nmap localhost
+
+2. Started a Test Web Server
+
+I started a simple HTTP server on TCP port 8000:
+
+python3 -m http.server 8000
+
+This created a controlled test service on my own machine.
+
+3. Scanned for Open Ports
+
+I performed another scan:
+
+nmap localhost
+
+Nmap detected:
+
+8000/tcp open http-alt
+
+This demonstrated how an active network service can expose a listening port.
+
+4. Service and Version Detection
+
+I then used:
+
+nmap -sV localhost
+
+Nmap identified the service as:
+
+8000/tcp open http SimpleHTTPServer 0.6 (Python 3.13.12)
+5. Saved the Scan Results
+
+The results were saved using:
+
+nmap -sV localhost -oN scan-results.txt
+📊 Findings
+Initial Scan
+
+Before starting the test web server:
+
+Host was reachable.
+1,000 default TCP ports were scanned.
+No open ports were detected.
+After Starting the Web Server
+
+After starting the Python HTTP server:
+
+TCP port 8000 became open.
+Nmap identified the service as HTTP.
+Service/version detection identified Python's SimpleHTTPServer.
+
+This demonstrated the relationship between an active service and an open network port.
+
+🛡️ Security Analysis
 
 An open port indicates that a service is accepting network connections.
 
-In a real environment, unnecessary services should be disabled or properly secured because exposed services can increase the attack surface.
+In a real production environment, unnecessary services should be disabled or properly secured because exposed services can increase the system's attack surface.
 
-This experiment was performed only on a controlled local laboratory system.
+This laboratory demonstrated the importance of:
 
-## Skills Demonstrated
+Identifying exposed services
+Understanding open ports
+Checking running service versions
+Reviewing unnecessary network services
+Performing security testing only with authorization
+📸 Screenshots
+1. Initial Localhost Scan
 
-- Linux command line
-- Network scanning
-- Nmap
-- Port identification
-- Service enumeration
-- Basic security analysis
-- Technical documentation
+2. Open Port Detection
+
+3. Service & Version Detection
+
+👨‍💻 Author
+
+Gandeeb Pokharel
+
+This project was created as part of my cybersecurity learning and practical portfolio.
