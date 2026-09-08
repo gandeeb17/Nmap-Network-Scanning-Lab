@@ -126,3 +126,8 @@ Nmap-Network-Scanning-Lab/
 ├── 01-basic-localhost-scan.png
 ├── 02-open-port-scan.png
 └── 03-service-version-detection.png
+👨‍💻 Author
+
+Gandeeb Pokharel
+
+This project was created as part of my cybersecurity learning and practical portfolio.
